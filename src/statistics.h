@@ -3,6 +3,7 @@
 
 #include <chrono>
 #include <ctime>
+#include <vector>
 
 namespace typr {
 
