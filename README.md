@@ -1,4 +1,8 @@
+#<p style="text-align: center;">Dark theme</p>
 ![](images/banner.png)
+
+#<p style="text-align: center;">Ligth theme</p>
+![](images/light_banner.png)
 
 # ⌨️ typr
 _`typr`_ is a program for improving typing speed. It's designed to be fast and lightweight, written in C++ using __curses__ library for GNU/Linux.
