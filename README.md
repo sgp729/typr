@@ -7,7 +7,7 @@ _`typr`_ is a program for improving typing speed. It's designed to be fast and l
 
 # ⚙️ customization 
 _`typr`_ is customizable: words, colors, sizes..
-To change the settings use command line by pressing __colon__
+To change the settings use command line by pressing __colon__ `:`<br>
 Here is the list of all available commands:
 
 | name | description |
