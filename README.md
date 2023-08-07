@@ -27,7 +27,7 @@ __Put files in the `~/.config/typr`__
 
 # 📈 Scalability
 If you're a developer and want to bring your customization and individualization on a next level, you can create your own front-end for the app! 
-Feel free to look at the [base view class](https://github.com/sgp729/typr/src/base_view.h) to inherit in your works.
+Feel free to look at the [base view class](https://github.com/sgp729/typr/tree/master/src/base_view.h) to inherit in your works.
 
 
 __Please report any issues encountered!__
