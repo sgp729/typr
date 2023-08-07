@@ -81,7 +81,7 @@ while (true) {
                         model.typed, model.options);
                 break;
 
-        case 127: // backspace
+        case 7: // backspace
                 if (model.typed.size()) {
                         model.typed.pop_back();
                 }

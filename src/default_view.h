@@ -15,7 +15,7 @@ public:
         void refresh(std::string&, 
                 std::vector<bool>&, config&);
 
-        char wait_for_input();
+        int wait_for_input();
 
         std::string wait_for_command();
 

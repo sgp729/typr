@@ -7,6 +7,7 @@
 #include <termios.h>
 #include <functional>
 #include <charconv>
+#include <iostream>
 
 #define COLOR_NONE -1
 #define COLOR_TYPED 9
@@ -24,11 +25,12 @@ namespace typr {
 
 default_view::default_view() {
 
+        std::cout << "\e[?1049h\e[H";
         initscr();
         
         cbreak();
         noecho();
-        
+
         if (has_colors()) {        
                 start_color();
                 use_default_colors();
@@ -42,6 +44,9 @@ default_view::default_view() {
         header = newwin(2, window_width, 0, 0);
         body = newwin(window_height - 5, window_width - 10, 3, 5);
         command_line = newwin(1, window_width, window_height - 1, 0);
+        
+        keypad(body, true);
+        
 
         init_pair(TYPED_PAIR, COLOR_TYPED, COLOR_NONE);
         init_pair(ERROR_PAIR, COLOR_ERROR, COLOR_NONE);
@@ -58,6 +63,8 @@ default_view::~default_view() {
         delwin(command_line);
         
         endwin();
+
+        std::cout << "\e[?1049l";
 }
 
 void default_view::refresh(std::string& test_text,
@@ -115,6 +122,8 @@ void default_view::refresh(std::string& test_text,
                 command_line = newwin(1, window_width,
                         window_height - 1, 0);
 
+                keypad(body, true);
+                
                 wattron(header, COLOR_PAIR(INTERFACE_PAIR));
 
                 mvwaddstr(header, 0, 3, "typr");
@@ -221,7 +230,7 @@ void default_view::refresh_body(std::string& test_text,
 
         wrefresh(body);
 }
-char default_view::wait_for_input() {
+int default_view::wait_for_input() {
 
         return wgetch(body);
 }

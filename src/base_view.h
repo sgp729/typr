@@ -29,10 +29,10 @@ public:
 
         /*
         * called when app waits for a character to be typed
-        * return value: [char] typed character
+        * return value: [int] typed character
         */
 
-        virtual char wait_for_input() = 0;
+        virtual int wait_for_input() = 0;
 
         /*
         * called when app waits for command from command line
