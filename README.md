@@ -1,7 +1,5 @@
-#<p style="text-align: center;">Dark theme</p>
 ![](images/banner.png)
-
-#<p style="text-align: center;">Ligth theme</p>
+#
 ![](images/light_banner.png)
 
 # ⌨️ typr
