@@ -23,7 +23,19 @@ Here is the list of all available commands:
 | `m` or `mode {mode}` | Used to change typing mode to one of the following: <ul> <li>relaxed or `r`: default mode, errors are highlighted </li> <li> strict or `s`: hard mode, test ends on error </li> <li> forgiving or `f`: light mode, ignores errors </li> </ul>
 | `r` or `reset` | Used to create new test
 
-__Put files in the `~/.config/typr`__
+# 💾 persistent options
+`typrrc` file contains _persistent_ options and will be loaded by default on program start. `typrrc` consists of regular commands described above.<br>
+Here is an example of a `typrrc`, which (1) loads the `words` file, (2) sets the size of the test to be 50, (3) sets the colors:
+```
+ldw
+testsize 50
+color typed 950 950 950
+color error 900 140 130
+color predicted 500 500 600
+color interface 950 950 950
+```
+
+__Searching for all files in `~/.config/typr`__
 
 # 📈 Scalability
 If you're a developer and want to bring your customization and individualization on a next level, you can create your own front-end for the app! 
