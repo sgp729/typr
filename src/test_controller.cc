@@ -136,10 +136,19 @@ void test_controller::new_test() {
 
         std::mt19937 rng{std::random_device{}()};
 
+        unsigned previous_index = model.options.get_words().size();
+
         for (int word_count = 0, end = model.options.get_test_size();
                         word_count < end; ++word_count) {
-                model.test_text += model.options.get_words().at(
-                        rng() % model.options.get_words().size());
+
+                unsigned word_index = rng() % model.options.get_words().size();
+                
+                // if we picked the same word, change word, cap to size
+                if (word_index == previous_index) {
+                        ++word_index %= model.options.get_words().size();
+                }
+
+                model.test_text += model.options.get_words().at(word_index);
                 model.test_text += ' ';
         }
 
