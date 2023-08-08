@@ -147,6 +147,7 @@ void test_controller::new_test() {
                 if (word_index == previous_index) {
                         ++word_index %= model.options.get_words().size();
                 }
+                previous_index = word_index;
 
                 model.test_text += model.options.get_words().at(word_index);
                 model.test_text += ' ';
