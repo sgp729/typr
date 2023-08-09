@@ -37,7 +37,13 @@ color interface 950 950 950
 
 __Searching for all files in `~/.config/typr`__
 
-# 📈 Scalability
+# 🛠️ building
+To build executable you can run `make` command in the `typr` directory. You can use the following command to download and build automatically:
+```
+git clone https://github.com/sgp729/typr.git && cd typr && make
+```
+
+# 📈 scalability
 If you're a developer and want to bring your customization and individualization on a next level, you can create your own front-end for the app! 
 Feel free to look at the [base view class](https://github.com/sgp729/typr/tree/master/src/base_view.h) to inherit in your works.
 
