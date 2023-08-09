@@ -11,4 +11,5 @@ std::string find_config_dir();
 std::vector<unsigned short>
 partial_wrap_words(const std::string&, unsigned);
 
+std::vector<std::string> split_string(std::string&, char);
 }

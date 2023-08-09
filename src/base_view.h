@@ -57,10 +57,12 @@ public:
         *       - double words_per_minute
         *       - double letters_per_second
         *       - double accuracy (percentage)
+        *       - bool is_new_best (indicates whether test beats
+        *                           previous highest WPM score)
         */
 
         virtual void 
-        display_stats(double, double, double, double) = 0;
+        display_stats(double, double, double, double, bool) = 0;
 };
 
 }

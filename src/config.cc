@@ -78,23 +78,9 @@ void config::invoke_command(std::string command) {
                 return;
         }
 
-        std::size_t space_index{};
-        std::vector<std::string> tokens;
         std::vector<std::string> file_commands;
 
-        while ((space_index = command.find(' ')) != std::string::npos) {
-                
-                std::string token = command.substr(0, space_index);
-                if (!token.empty()) {
-                        tokens.push_back(token);
-                }
-                
-                command.erase(0, space_index + sizeof(' '));
-        }
-
-        if (!command.empty()) {
-                tokens.push_back(command);
-        }
+        std::vector<std::string> tokens = split_string(command, ' ');
 
         std::string opcode = tokens.at(0);
         tokens.erase(tokens.begin());

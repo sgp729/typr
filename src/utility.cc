@@ -74,4 +74,27 @@ partial_wrap_words(const std::string& text, unsigned width) {
         return lines;
 }
 
+std::vector<std::string> split_string(std::string& str, char delimiter) {
+
+        std::vector<std::string> chunks;
+
+        std::size_t delim_index{std::string::npos};
+
+        while ((delim_index = str.find(delimiter)) != std::string::npos) {
+                
+                std::string chunk = str.substr(0, 
+                        delim_index);
+                if (!chunk.empty()) {
+                        chunks.emplace_back(chunk);
+                }
+                str.erase(0, delim_index + 1);
+        }
+
+        if (!str.empty()) {
+                chunks.emplace_back(str);
+        }
+
+        return chunks;
+}
+
 }

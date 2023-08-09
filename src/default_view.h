@@ -21,7 +21,7 @@ public:
 
         void error(std::string, config&);
 
-        void display_stats(double, double, double, double);
+        void display_stats(double, double, double, double, bool);
 
 private:
         WINDOW* header{};

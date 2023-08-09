@@ -5,6 +5,8 @@
 
 #include <exception>
 #include <fstream>
+#include <string>
+#include <algorithm>
 
 namespace typr {
 
@@ -77,7 +79,6 @@ statistics::save(unsigned test_size, double wpm, double duration, double accurac
                         << wpm << ' ' << duration << ' ' << accuracy << '\n';
 }
 
-// prototype for best wpm scores
 double
 statistics::get_best_for(unsigned test_size) const {
 
@@ -86,7 +87,7 @@ statistics::get_best_for(unsigned test_size) const {
                 config_dir = find_config_dir();
         } catch (...) { throw; }
 
-        std::ifstream stat_stream{config_dir + "stats"};
+        std::ifstream stat_stream{config_dir + "/stats"};
         if (!stat_stream.good()) {
                 throw std::runtime_error{
                     std::string{"can't open "} + config_dir + "/stats" };
@@ -95,7 +96,27 @@ statistics::get_best_for(unsigned test_size) const {
         char entry_buffer[128];
         // iterate over stats entries... find best wpm
 
+        double max_words_per_minute{};
 
+        while (stat_stream.getline(entry_buffer, 128)) {
+        
+                std::string stats_entry{entry_buffer};
+                if (stats_entry.empty()) {
+                        continue;
+                }
+                
+                std::vector<std::string> stats = split_string(stats_entry, ' ');
+
+                // filter irrelevant entries (different test size)
+                if (!(std::stoul(stats.at(1)) == test_size)) {
+                        continue;
+                }
+
+                max_words_per_minute = std::max(max_words_per_minute,
+                                                std::stod(stats.at(2)));
+        }
+
+        return max_words_per_minute;
 }
 
 }

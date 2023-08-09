@@ -5,6 +5,7 @@
 #include <thread>
 #include <chrono>
 #include <random>
+#include <limits>
 
 namespace typr {
 
@@ -31,19 +32,30 @@ while (true) {
 
                 double duration_sec =
                         model.stats.get_duration().count() / 1000.l;
-
-                model.stats.save(model.options.get_test_size(),
-                        words_per_minute, duration_sec, accuracy);
+                
+                double best_words_per_minute{std::numeric_limits<double>::max()};
 
                 try {
-                        view.display_stats(duration_sec,
-                          words_per_minute, letter_per_sec,
-                          accuracy);
+                        best_words_per_minute = model.stats.get_best_for(
+                                model.options.get_test_size() );
 
                 } catch (std::exception& exc) {
                         view.error(exc.what(), model.options);
                 }
-                
+
+                bool is_new_best = words_per_minute > best_words_per_minute;
+                try {
+                        model.stats.save(model.options.get_test_size(),
+                                words_per_minute, duration_sec, accuracy);
+
+                } catch (std::exception& exc) {
+                        view.error(exc.what(), model.options);
+                }
+
+                view.display_stats(duration_sec,
+                        words_per_minute, letter_per_sec,
+                        accuracy, is_new_best);
+
                 new_test();
         }
 

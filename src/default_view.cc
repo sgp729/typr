@@ -178,7 +178,7 @@ void default_view::refresh_body(std::string& test_text,
 
         // get first letter to print
         unsigned letter{};
-        for (int i = 0; i < line_offset; ++i) {
+        for (unsigned i = 0; i < line_offset; ++i) {
                 letter += helper_lines_length.at(i);
         }
 
@@ -294,7 +294,7 @@ void default_view::error(std::string message, [[maybe_unused]] config& opts) {
 
 void default_view::display_stats(double duration_sec,
     double words_per_minute, double letter_per_second,
-    double accuracy_percent) {
+    double accuracy_percent, bool is_new_best) {
 
         werase(body);
         wattron(body, COLOR_PAIR(INTERFACE_PAIR));
@@ -313,6 +313,9 @@ void default_view::display_stats(double duration_sec,
 
         mvwaddstr(body, 1, 0, "wpm: ");
         waddstr(body, buffer);
+        if (is_new_best) {
+                waddstr(body, " ! new best");
+        }
 
         std::to_chars(&buffer[0], &buffer[7],
                       letter_per_second, std::chars_format::fixed, 2);
