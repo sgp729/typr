@@ -111,12 +111,13 @@ void default_view::refresh(std::string& test_text,
                 werase(body);
                 werase(command_line);
 
+                wrefresh(body);
                 wrefresh(command_line);
 
                 delwin(header);
                 delwin(body);
                 delwin(command_line);
-        
+
                 header = newwin(2, window_width, 0, 0);
                 body = newwin(window_height - 5, window_width - 10, 3, 5);
                 command_line = newwin(1, window_width,
