@@ -200,7 +200,7 @@ void default_view::refresh_body(std::string& test_text,
         unsigned window_line{};
         unsigned window_cursor{};
 
-        for (letter; letter < size; ++letter, ++window_cursor) {
+        for (; letter < size; ++letter, ++window_cursor) {
 
                 char text_letter{ test_text.at(letter) };
 

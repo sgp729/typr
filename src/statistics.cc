@@ -60,8 +60,7 @@ double statistics::get_accuracy(std::vector<bool>& typed) const {
 }
 
 void
-statistics::save(unsigned test_size, double wpm, double lps,
-    double accuracy) const {
+statistics::save(unsigned test_size, double wpm, double duration, double accuracy) const {
 
         std::string config_dir;
         try {
@@ -75,7 +74,28 @@ statistics::save(unsigned test_size, double wpm, double lps,
         }
 
         stat_stream << test_start_point << ' ' << test_size << ' '
-                        << wpm << ' ' << lps << ' ' << accuracy << '\n';
+                        << wpm << ' ' << duration << ' ' << accuracy << '\n';
+}
+
+// prototype for best wpm scores
+double
+statistics::get_best_for(unsigned test_size) const {
+
+        std::string config_dir;
+        try {
+                config_dir = find_config_dir();
+        } catch (...) { throw; }
+
+        std::ifstream stat_stream{config_dir + "stats"};
+        if (!stat_stream.good()) {
+                throw std::runtime_error{
+                    std::string{"can't open "} + config_dir + "/stats" };
+        }
+
+        char entry_buffer[128];
+        // iterate over stats entries... find best wpm
+
+
 }
 
 }

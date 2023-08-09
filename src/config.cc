@@ -78,7 +78,7 @@ void config::invoke_command(std::string command) {
                 return;
         }
 
-        int space_index{};
+        std::size_t space_index{};
         std::vector<std::string> tokens;
         std::vector<std::string> file_commands;
 

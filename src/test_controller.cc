@@ -33,7 +33,7 @@ while (true) {
                         model.stats.get_duration().count() / 1000.l;
 
                 model.stats.save(model.options.get_test_size(),
-                        words_per_minute, letter_per_sec, accuracy);
+                        words_per_minute, duration_sec, accuracy);
 
                 try {
                         view.display_stats(duration_sec,

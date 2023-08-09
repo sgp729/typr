@@ -28,8 +28,8 @@ private:
         WINDOW* body{};
         WINDOW* command_line{};
         
-        unsigned window_width;
-        unsigned window_height;
+        int window_width;
+        int window_height;
 
         unsigned body_width;
         unsigned body_height;

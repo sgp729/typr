@@ -27,6 +27,8 @@ public:
 
         void save(unsigned, double, double, double) const;
 
+        double get_best_for(unsigned) const;
+
 private:
         bool timer_status{};
 
