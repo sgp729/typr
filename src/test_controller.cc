@@ -100,13 +100,15 @@ while (true) {
                 view.refresh(model.test_text,
                         model.typed, model.options);
                 break;
-
+ 
         case ':':
-                model.stats.stop_timer();
+                if (model.stats.is_waiting()) {
+                        model.stats.stop_timer();
+                }
+
                 view.refresh(model.test_text,
                         model.typed, model.options);
                 try {
-
                         std::string command = view.wait_for_command();
 
                         if (command == "r" || command == "reset") {

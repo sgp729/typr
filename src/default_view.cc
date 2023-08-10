@@ -126,7 +126,6 @@ void default_view::refresh(std::string& test_text,
                 keypad(body, true);
                 
                 wattron(header, COLOR_PAIR(INTERFACE_PAIR));
-
                 mvwaddstr(header, 0, 3, "typr");
                 mvwaddstr(header, 0, window_width - 39,
                         "press : to enter command line");
@@ -135,6 +134,8 @@ void default_view::refresh(std::string& test_text,
                 for (int i = 0; i < window_width; ++i) {
                         waddch(header, '=');
                 }
+
+                wattron(command_line, COLOR_PAIR(INTERFACE_PAIR));
 
                 mvwaddstr(command_line, 0, 1, ":_");
 

@@ -14,6 +14,7 @@ void statistics::reset() {
 
         test_start_point = time(nullptr);
         test_duration = std::chrono::milliseconds{0};
+        timer_status = false;
 }
 
 void statistics::start_timer() {
