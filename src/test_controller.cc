@@ -59,7 +59,7 @@ while (true) {
                 new_test();
         }
 
-        char input = view.wait_for_input();
+        int input = view.wait_for_input();
 
         switch (input) {
 
@@ -93,7 +93,7 @@ while (true) {
                         model.typed, model.options);
                 break;
 
-        case 7: // backspace
+        case 263: // backspace
                 if (model.typed.size()) {
                         model.typed.pop_back();
                 }

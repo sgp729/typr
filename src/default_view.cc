@@ -46,7 +46,6 @@ default_view::default_view() {
         command_line = newwin(1, window_width, window_height - 1, 0);
         
         keypad(body, true);
-        
 
         init_pair(TYPED_PAIR, COLOR_TYPED, COLOR_NONE);
         init_pair(ERROR_PAIR, COLOR_ERROR, COLOR_NONE);
