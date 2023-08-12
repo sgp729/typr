@@ -3,7 +3,7 @@
 ![](images/light_banner.png)
 
 # ⌨️ typr
-_`typr`_ is a program for improving typing speed. It's designed to be fast and lightweight, written in C++ using __curses__ library for GNU/Linux.
+_`typr`_ is a program for improving typing speed. It's designed to be fast and lightweight, featuring Command Line Interface, written in C++ using __curses__ library for GNU/Linux.
 
 # ⚙️ customization 
 _`typr`_ is customizable: words, colors, sizes..
